@@ -12,6 +12,8 @@ Twilio Session Managment System.
       "caller":{"name":"name_of_caller","number":"123789"},
       "receiver":{"name":"name_of_number","number":"123456"}
     }`
+
+|   Params         |                      Need                                |
 |------------------|----------------------------------------------------------|
 | uniq_caller_id   | unique id to represent that caller(user id) eg: `u29if`  |
 | uniq_receiver_id | unique id to represent that receiver(user id)            |
@@ -21,7 +23,6 @@ Twilio Session Managment System.
 | nubmber          | number of the caller                                     |
 | name_of_receiver | name of the receiver(user)                               |
 | number           | number of the receiver                                   |
-|------------------|----------------------------------------------------------|
 
 
 4. In response to the creating the user and order we will send back json data which contains encrypted_caller_id and encrypted_receiver_id in json format
