@@ -29,6 +29,8 @@ namespace :db do
       meeting.caller_id = a
       a.pop(meeting.caller_id)
       meeting.receiver_id = a
+      puts "===============> Meeting Caller Id #{meeting.caller_id}     <======================="
+      puts "===============> Meeting Receiver id #{meeting.receiver_id} <======================="
       meeting.order_id = i
       meeting.duration = [15, 30, 45, 60, 75, 90]
       meeting.start_time = Time.now..(Time.now+1.month)
