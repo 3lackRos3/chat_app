@@ -1,7 +1,7 @@
 <div class="container">
   <div id="button_log">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-    <div class="alert alert-info" id="log">Loading pigeons...
+    <div class="alert alert-info" id="log">Loading elephants...
   </div>
   </div>
   <center>
@@ -90,14 +90,17 @@
 
         <div class="content">
 		<%# if @receiver.call_type == "phone" %>
-			      <%= hidden_field_tag 'number', @receiver.number, :id => 'number' %>
+			      <%# hidden_field_tag 'number', @receiver.number, :id => 'number' %>
           <%# else %>
-           	<%= hidden_field_tag 'number', @receiver.name, :id => 'number' %>
+           	<%# hidden_field_tag 'number', @receiver.name, :id => 'number' %>
          <%# end %>
-          <!--  <input class="input-lg" id="number" name="number" placeholder="Enter a phone number or client to call" type="text"></input>-->
+           <input class="input-lg" id="number" name="number" placeholder="Enter a phone number or client to call" type="text"></input>
           <br/>
 
-          <input class="input-lg" id="count_down_time" name="count_down_time" placeholder="Enter the number of seconds the call should last" type="hidden"></input>
+          <input class="input-lg" id="count_down_time" name="count_down_time" placeholder="Enter the number of seconds the call should last" type="hidden" value=<%= @meeting.duration.seconds.to_s %>></input>
+          <center>
+            <div class="timer" data-timer="<%= @meeting.duration.seconds.to_s %>"></div>
+          </center>  
           <br/>
          <% if params[:u] != "p" %>
             <button class="call btn-lg btn-success" onclick="twilio_client_call();">

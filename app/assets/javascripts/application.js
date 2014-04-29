@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require TimeCircles
 //= require twilio_client
-//= require jquery.timeTo
 //= require_tree .
