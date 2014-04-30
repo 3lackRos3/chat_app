@@ -1,4 +1,7 @@
+var timeout;
+
 read = function(){
+  
   $("#fountainG").hide();
   $("#movingBallG").hide();
 
@@ -24,28 +27,34 @@ read = function(){
 		$("#log").text("Successfully established call");
 		$("#movingBallG").show();
 		$("#fountainG").hide();
+    $("#extenders").show();
     
-    setTimeout(function() {
+    timeout = setTimeout(function() {
+      console.log("HUP");
       twilio_client_hangup();
     }, count_down_time);
     
-//    $(".timer").TimeCircles().restart();
     $(".timer").TimeCircles({
       total_duration: "Hours",
-      start: false,  
+      start: false,
       time: {
         Days: {
           show: false
+        },
+        Hours: {
+          show: false
         }
       }
-    }).start();
+    }).restart();
+    $(".timer").TimeCircles().start();
     
 	});
 	Twilio.Device.disconnect(function (conn) {
     $(".timer").TimeCircles().stop();
 		$("#log").text("Call ended");
 		$("#fountainG").hide();
-		 $("#movingBallG").hide();
+ 	  $("#movingBallG").hide();
+    $("#extenders").hide();
 	});
 	
 	Twilio.Device.incoming(function (conn) {
@@ -95,8 +104,20 @@ function twilio_client_call() {
 }
 function twilio_client_hangup() {
 	Twilio.Device.disconnectAll();
+  $("#extenders").hide();
   $(".timer").TimeCircles().stop();
 //	$("#countdown").timeTo("stop");
   // $( ".nav_bar_side" ).css( "background-image", "linear-gradient(to bottom,#428bca 0,#357ebd 100%)" );
+}
+
+function twilio_client_extend(ext_time) {
+
+  clearTimeout(timeout);
+  var count_down_time = ext_time * 1000;
+  console.log(count_down_time);
+    
+  timeout = setTimeout(function() {
+    twilio_client_hangup();
+  }, count_down_time);
 }
 
