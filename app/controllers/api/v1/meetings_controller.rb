@@ -47,6 +47,7 @@ module Api
 				#Rails.logger.info user_receiver.receiver
         
         start_time = params[:meeting][:start_at].to_time
+        Rails.logger.info "=====================================================#{start_time.utc}"
 
 				meeting = Meeting.create(caller_id: caller_obj.id,
 																		receiver_id: receiver_obj.id,
