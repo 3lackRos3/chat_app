@@ -2,13 +2,13 @@
 Twilio Session Managment System.
 
 ##Usage
-1. Generate and api_key for your application
+1. Generate an api_key for your application
 2. While creating orders/event send a copy of details to Talkbot as POST request
     * While POSTing api_key as `token` in the  header to authenticate your application.
     * The details of the order/event should be passed as params along with above mentioned token in the header file.
-    * The crul equivalent of the above mentioned post request is as follows
+    * The curl equivalent of the above mentioned post request is as follows
 
-    `curl -v -H 'Authorization: Token token="4dee88b4ca2b65b98f52e27e3a3ce250", non="abc"' -X POST -d 'user[uid_caller]=123&user[uid_receiver]=567&meeting[order_id]=55&meeting[duration]=9&meeting[start_at]="31-12-2014 3:00 PM"&caller[name]="Hari"&caller[number]=123456789&caller[call_type]=Phone&receiver[name]="Machi"&receiver[number]=588974456&receiver[call_type]=Browser'  http://localhost:3000/api/v1/meetings`
+    `curl -v -H 'Authorization: Token token="4dee88b4ca2b65b98f52e27e3a3ce250", non="abc"' -X POST -d 'user[uid_caller]=123&user[uid_receiver]=567&meeting[order_id]=55&meeting[duration]=9&meeting[start_at]="31-12-2014 3:00 PM"&caller[name]="sam"&caller[number]=123456789&caller[call_type]=Phone&receiver[name]="tommy"&receiver[number]=588974456&receiver[call_type]=Browser'  http://localhost:3000/api/v1/meetings`
 
 |   Params         |                      Need                                |
 |------------------|----------------------------------------------------------|
