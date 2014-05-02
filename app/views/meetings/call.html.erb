@@ -90,7 +90,7 @@
 
         <div class="content">
 		<%# if @receiver.call_type == "phone" %>
-			      <%= hidden_field_tag 'number', @receiver.number, :id => 'number' %>
+			      <%#= hidden_field_tag 'number', @receiver.number, :id => 'number' %>
           <%# else %>
            	<%= hidden_field_tag 'number', @receiver.name, :id => 'number' %>
          <%# end %>
