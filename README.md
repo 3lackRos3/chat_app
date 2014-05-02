@@ -8,7 +8,7 @@ Twilio Session Managment System.
     * The details of the order/event should be passed as params along with above mentioned token in the header file.
     * The curl equivalent of the above mentioned post request is as follows
 
-    `curl -v -H 'Authorization: Token token="4dee88b4ca2b65b98f52e27e3a3ce250", non="abc"' -X POST -d 'user[uid_caller]=123&user[uid_receiver]=567&meeting[order_id]=55&meeting[duration]=9&meeting[start_at]="31-12-2014 3:00 PM"&caller[name]="sam"&caller[number]=123456789&caller[call_type]=Phone&receiver[name]="tommy"&receiver[number]=588974456&receiver[call_type]=Browser'  http://yourdomain.com/api/v1/meetings`
+    `curl -v -H 'Authorization: Token token="4dee88b4ca2b65b98f52e27e3a3ce250", non="abc"' -X POST -d 'user[uid_caller]=123&user[uid_receiver]=567&meeting[order_id]=55&meeting[duration]=9&meeting[start_at]="31-12-2014 3:00 PM"&caller[name]=sam&caller[number]=123456789&caller[call_type]=Phone&receiver[name]=tommy&receiver[number]=588974456&receiver[call_type]=Browser'  http://appdomain.com/api/v1/meetings`
 
 |   Params         |                      Need                                |
 |------------------|----------------------------------------------------------|
@@ -33,7 +33,7 @@ Twilio Session Managment System.
 5. Store those data in your application.
 6. Log in the user into TalkBot by POSTing the encrypted_caller/receiver_id as follows
     
-    `http://yourdomain.com/sessions?acc_tok=BAhJIggxMjMGOgZFVA==--45a45db915efc4dd9e79e15c6d7cc54cca9be868`
+    `http://appdomain.com/sessions?acc_tok=BAhJIggxMjMGOgZFVA==--45a45db915efc4dd9e79e15c6d7cc54cca9be868`
 
   Now the user will be signed in and he can manage his sessions.
     
