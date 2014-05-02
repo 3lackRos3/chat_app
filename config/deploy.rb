@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 set :application, 'chat_app'
-set :repo_url, 'git@github.com:UDProducts/chat_app.git'
+set :repo_url, 'git@github.com:aravindgd/chat_app.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
