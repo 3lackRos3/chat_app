@@ -1,4 +1,7 @@
+var timeout;
+
 read = function(){
+  
   $("#fountainG").hide();
   $("#movingBallG").hide();
 
@@ -19,14 +22,39 @@ read = function(){
 		$("#log").text("Error: " + error.message);
 	});
 	Twilio.Device.connect(function (conn) {
+  	var count_down_time = parseInt($('#count_down_time').val()) * 1000;
+    
 		$("#log").text("Successfully established call");
 		$("#movingBallG").show();
 		$("#fountainG").hide();
+    $("#extenders").show();
+    
+    timeout = setTimeout(function() {
+      console.log("HUP");
+      twilio_client_hangup();
+    }, count_down_time);
+    
+    $(".timer").TimeCircles({
+      total_duration: "Hours",
+      start: false,
+      time: {
+        Days: {
+          show: false
+        },
+        Hours: {
+          show: false
+        }
+      }
+    }).restart();
+    $(".timer").TimeCircles().start();
+    
 	});
 	Twilio.Device.disconnect(function (conn) {
+    $(".timer").TimeCircles().stop();
 		$("#log").text("Call ended");
 		$("#fountainG").hide();
-		 $("#movingBallG").hide();
+ 	  $("#movingBallG").hide();
+    $("#extenders").hide();
 	});
 	
 	Twilio.Device.incoming(function (conn) {
@@ -62,16 +90,34 @@ function twilio_client_call() {
 	console.log(count_down_time)
 	
 	$("#fountainG").show();
-	$('#countdown').timeTo({
-		seconds: 100,
-		countdown: true
-	},function(){ 
-		twilio_client_hangup();
-	});
+  console.log("Welkin");
+
+//	$('#countdown').timeTo({
+//		seconds: count_down_time,
+//		countdown: true
+//	},function(){ 
+//    alert("Count down finished");
+//		twilio_client_hangup();
+//	});
+//  $(".timer").TimeCircles().end().fadeOut();
+  console.log("The great");
 }
 function twilio_client_hangup() {
 	Twilio.Device.disconnectAll();
-	$("#countdown").timeTo("stop");
+  $("#extenders").hide();
+  $(".timer").TimeCircles().stop();
+//	$("#countdown").timeTo("stop");
   // $( ".nav_bar_side" ).css( "background-image", "linear-gradient(to bottom,#428bca 0,#357ebd 100%)" );
+}
+
+function twilio_client_extend(ext_time) {
+
+  clearTimeout(timeout);
+  var count_down_time = ext_time * 1000;
+  console.log(count_down_time);
+    
+  timeout = setTimeout(function() {
+    twilio_client_hangup();
+  }, count_down_time);
 }
 

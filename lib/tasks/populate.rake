@@ -25,16 +25,17 @@ namespace :db do
     i = 1
 
     Meeting.populate 10 do |meeting|
-      a = User.all.map{ |c| c.id }
-      meeting.caller_id = a
-      a.pop(meeting.caller_id)
-      meeting.receiver_id = a
-      puts "===============> Meeting Caller Id #{meeting.caller_id}     <======================="
+      meeting.caller_id = User.all.map{ |c| c.id }
+      meeting.receiver_id = User.all.map{ |c| c.id }.reject{ |x| x == meeting.caller_id } 
+      puts "===============> Meeting Caller Id   #{meeting.caller_id}   <======================="
       puts "===============> Meeting Receiver id #{meeting.receiver_id} <======================="
       meeting.order_id = i
       meeting.duration = [15, 30, 45, 60, 75, 90]
       meeting.start_time = Time.now..(Time.now+1.month)
       meeting.start_date = Date.today..(Date.today+1.month)
+      call_type = [ "Browser" , "Phone"]
+      meeting.caller_call_type = call_type
+      meeting.receiver_call_type = call_type
       i+=1
     end
 
