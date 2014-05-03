@@ -1,12 +1,12 @@
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 set :application, 'chat_app'
-set :repo_url,  'git@github.com:UDProducts/chat_app.git'
+set :repo_url,  'git@github.com:3lackRos3/chat_app.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :deploy_to, '/home/deployer/apps/chat_app'
+set :deploy_to, '/home/deployer/apps/talk/chat_app'
 
 set :scm, :git
 set :deploy_via, :remote_cache
