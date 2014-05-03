@@ -29,7 +29,7 @@
       <td><%= meeting.start_time.to_formatted_s(:time)%> <%= meeting.start_date.to_formatted_s(:long) %></td>
       <td><%= meeting.duration %></td>
       <td><%= meeting.pin %></td>
-      <td><%= link_to 'Show', meeting, class: "btn btn-info" %></td>
+      <!--<td><%#= link_to 'Show', meeting, class: "btn btn-info" %></td>-->
       <% if signed_in? %>
         <% if meeting.caller_id == current_user.id %>
           <td><%= link_to 'Call', call_path(:meeting_id => meeting.id), class: "btn btn-success" %>
@@ -46,5 +46,5 @@
 
     <br>
 
-    <%= link_to 'New Meeting', new_meeting_path %>
+    <%#= link_to 'New Meeting', new_meeting_path %>
   </div>

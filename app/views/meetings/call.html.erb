@@ -110,7 +110,7 @@
           <button class="call btn-lg btn-danger" onclick="twilio_client_hangup();">
             Hangup
           </button>
-        <% if params[:u] != "p" %>
+        <% if params[:u] == "p" %>
           <div id="extenders">
             <button class="call btn-lg btn-warning" onclick="twilio_client_extend(60);">
               +1 Minute
