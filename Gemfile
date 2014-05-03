@@ -40,6 +40,7 @@ end
 require 'twilio-ruby'
 
 gem 'capistrano'
+gem 'capistrano-rails'
 gem 'better_errors'
 gem "binding_of_caller"
 # Use ActiveModel has_secure_password
