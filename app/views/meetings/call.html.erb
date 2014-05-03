@@ -89,12 +89,12 @@
           </div>
 
         <div class="content">
-		<%# if @receiver.call_type == "phone" %>
-			      <%# hidden_field_tag 'number', @receiver.number, :id => 'number' %>
-          <%# else %>
-           	<%# hidden_field_tag 'number', @receiver.name, :id => 'number' %>
-         <%# end %>
-           <input class="input-lg" id="number" name="number" placeholder="Enter a phone number or client to call" type="text"></input>
+		  <% if @meeting.receiver_call_type == "Phone" or @meeting.receiver_call_type == "phone" %>
+			<%= hidden_field_tag 'number', @receiver.number, :id => 'number' %>
+          <% else %>
+           	<%= hidden_field_tag 'number', @receiver.name, :id => 'number' %>
+          <% end %>
+           <!--<input class="input-lg" id="number" name="number" placeholder="Enter a phone number or client to call" type="text"></input>-->
           <br/>
 
           <input class="input-lg" id="count_down_time" name="count_down_time" placeholder="Enter the number of seconds the call should last" type="hidden" value=<%= @meeting.duration.seconds.to_s %>></input>
