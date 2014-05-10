@@ -88,7 +88,7 @@
           </div>
           </div>
 
-        <div class="content">
+        <div class="content testclasss">
 		  <% if @meeting.receiver_call_type == "Phone" or @meeting.receiver_call_type == "phone" %>
 			<%= hidden_field_tag 'number', @receiver.number, :id => 'number' %>
           <% else %>
