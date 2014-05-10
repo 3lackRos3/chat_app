@@ -23,7 +23,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "MEETINGS", meetings_path %></li>
+          <li><%= link_to "HOME", meetings_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
           <% end %>
