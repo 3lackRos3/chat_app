@@ -9,7 +9,7 @@ read = function(){
   {
 	var twilio_token = $("#twilio_client_token").data("token-id") 
   var twilio_client_name = $("#twilio_client_name").data("client-name") 
-	console.log("%%%%%%%%%%%%%%%%%%%%%%%%5")
+	console.log("%%%%%%" + twilio_client_name + "%%%%%%%%%%%")
 	console.log(twilio_token)
   
 	Twilio.Device.setup(twilio_token, {debug: true});

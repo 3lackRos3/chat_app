@@ -66,9 +66,9 @@ class MeetingsController < ApplicationController
       #  r.Say 'Thank you we are forwarding your call'
       #end
       # r.Say 'Sorry we dint receive any input thank you, have a goooooood day'
-      r.Gather :numDigits => '5', :action => '/make_call', :method => 'get' do |g|
-        g.Say 'Press 1 to forward the call'
-        g.Say 'Thank you we are forwarding your call'
+      r.Gather :numDigits => '7', :action => '/make_call', :method => 'get' do |g|
+        g.Say 'Welcome to celeb4u.com'
+        g.Say 'Enter your 7 digit code to talk with your favourite celebrity'
       end
       r.Say 'Sorry we dint receive any input thank you, have a goooooood day'
     end
@@ -89,7 +89,7 @@ class MeetingsController < ApplicationController
         # Test to see if the PhoneNumber is a number, or a Client ID. In
         # this case, we detect a Client ID by the presence of non-numbers
         # in the PhoneNumber parameter.
-        if @receiver.call_type == "phone"
+        if meeting.receiver_call_type == "Phone" or meeting.receiver_call_type == "phone"
           medium = @receiver.number
           Rails.logger.info "test the values #{medium}"
           d.Number(CGI::escapeHTML medium.to_s)

@@ -8,7 +8,7 @@ Twilio Session Managment System.
     * The details of the order/event should be passed as params along with above mentioned token in the header file.
     * The curl equivalent of the above mentioned post request is as follows
 
-      `curl -v -H 'Authorization: Token token="4dee88b4ca2b65b98f52e27e3a3ce250"' -X POST -d 'user[uid_caller]=1222&user[uid_receiver]=56712&meeting[order_id]=551&meeting[duration]=9&meeting[start_at]=31-12-2014 5:00 PM&caller[name]=Hari&caller[number]=123456789&caller[call_type]=Phone&receiver[name]=Machi&receiver[number]=588974456&receiver[call_type]=Browser'  http://77.245.75.194:4000//api/v1/meetings`
+      `curl -v -H 'Authorization: Token token="4dee88b4ca2b65b98f52e27e3a3ce250"' -X POST -d 'user[uid_caller]=1222&user[uid_receiver]=56712&meeting[order_id]=551&meeting[duration]=9&meeting[start_at]=31-12-2014 5:00 PM&caller[name]=cane&caller[number]=123456789&caller[call_type]=Phone&receiver[name]=tommy&receiver[number]=588974456&receiver[call_type]=Browser'  http://77.245.75.194:4000/api/v1/meetings`
 
 |   Params         |                      Need                                |
 |------------------|----------------------------------------------------------|

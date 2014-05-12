@@ -8,8 +8,8 @@ class Meeting < ActiveRecord::Base
     puts "***************************"
     puts "#{self.caller.id}"
     puts "#{self.id}"
-    puts "#{Random.rand(10000...99999)}"
-    self.pin = "#{self.caller.id}#{self.id}#{Random.rand(10000...99999)}"
+    puts "#{Random.rand(1000...9999)}"
+    self.pin = "#{self.caller.id}#{self.id}#{Random.rand(100...999)}"
     self.save!
     puts self.pin
   end
