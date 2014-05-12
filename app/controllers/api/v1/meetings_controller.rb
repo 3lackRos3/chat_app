@@ -6,33 +6,32 @@ module Api
 
 
 			def create
-				Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{params}"
-
-				Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{meeting_params}"
-				Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{caller_params}"
-				Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{receiver_params}"
-				Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{user_params}"
+        Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{params}"
+        Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{meeting_params}"
+				#Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{caller_params}"
+				#Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{receiver_params}"
+        Rails.logger.info "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#{user_params[:uid_caller]}"
 
         api_id = ApiKey.find_by(access_token: @tok).id
 
         Rails.logger.info "/////////////////////------------------------------#{api_id}"
         Rails.logger.info "/////////////////////------------------------------#{@opt[:non]}"
 
-				if caller_obj = User.find_by(uniq_id: params[:user][:uid_caller])
+				if caller_obj = User.find_by(uniq_id: user_params[:uid_caller])
 					Rails.logger.info "caller user already present"
 				else
-					caller_obj = User.create(uniq_id: params[:user][:uid_caller],
-                                   name: params[:caller][:name],
-                                   number: params[:caller][:number],
+					caller_obj = User.create(uniq_id: user_params[:uid_caller],
+                                   name: caller_params[:name],
+                                   number: caller_params[:number],
                                    api_key_id: api_id)
 				end
 				
-				if receiver_obj = User.find_by(uniq_id: params[:user][:uid_receiver])
+				if receiver_obj = User.find_by(uniq_id: user_params[:uid_receiver])
 					Rails.logger.info "receiver user already present"
 				else
-					receiver_obj = User.create(uniq_id: params[:user][:uid_receiver],
-                                     name: params[:receiver][:name],
-                                     number: params[:receiver][:number],
+					receiver_obj = User.create(uniq_id: user_params[:uid_receiver],
+                                     name: receiver_params[:name],
+                                     number: receiver_params[:number],
                                      api_key_id: api_id)
 				end
 
@@ -46,7 +45,7 @@ module Api
 				#Rails.logger.info user_receiver.id
 				#Rails.logger.info user_receiver.receiver
         
-        start_time = params[:meeting][:start_at].to_time
+        start_time = meeting_params[:start_at].to_time
         Rails.logger.info "=====================================================#{start_time.utc}"
 
 				meeting = Meeting.create(caller_id: caller_obj.id,
@@ -82,19 +81,23 @@ module Api
 			private
 
 			def meeting_params
-				params.require(:meeting).permit(:order_id, :call_type, :duration, :start_at)
+        eval(params[:meeting])
+				#params.require(:meeting).permit(:order_id, :duration, :start_at)
 			end
 
 			def caller_params
-				params.require(:caller).permit(:name, :number, :call_type)
+        eval(params[:caller])
+				#params.require(:caller).permit(:name, :number, :call_type)
 			end
 
 			def receiver_params
-				params.require(:receiver).permit( :name, :numberi, :call_type)
+        eval(params[:receiver])
+        #params.require(:receiver).permit( :name, :numberi, :call_type)
 			end
 
 			def user_params
-				params.require(:user).permit(:uid_receiver,:uid_caller)
+        eval(params[:user])
+				#params.require(:user).permit(:uid_receiver,:uid_caller)
 			end
 
 			def restrict_access
