@@ -1,5 +1,6 @@
 set :stage, :staging
-set :branch, proc { "develop"}
+#set :branch, proc { "develop"}
+set :branch, :ask
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary

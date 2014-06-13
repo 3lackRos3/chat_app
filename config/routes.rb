@@ -12,7 +12,7 @@ ChatApp::Application.routes.draw do
   resources :meetings
   root "api_keys#index"
 
-  match "sessions" => "sessions#create", via: [:post]
+  match "sessions" => "sessions#create", via: [:get]
   match "signout" => "sessions#destroy", via: [:delete]
   
   match "call" => "meetings#call", via: [:get, :post]	

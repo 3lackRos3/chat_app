@@ -37,7 +37,7 @@ group :development do
 end
 
 #twilio api
-require 'twilio-ruby'
+#require 'twilio-ruby'
 
 gem 'capistrano'
 gem 'capistrano-rails'
