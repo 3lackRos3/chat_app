@@ -4,7 +4,11 @@ class SessionsController < ApplicationController
 
   def create
     begin
-      uid = VERIFIER.verify(params[:session][:acc_tok])
+      if params[:session].nil?
+        uid = VERIFIER.verify(params[:acc_tok])
+      else
+        uid = VERIFIER.verify(params[:session][:acc_tok])
+      end
       Rails.logger.info "#############################################################{uid}"
       if user = User.find_by(uniq_id: uid)
         sign_in user

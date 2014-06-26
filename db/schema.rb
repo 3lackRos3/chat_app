@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430105142) do
+ActiveRecord::Schema.define(version: 20140626093216) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20140430105142) do
     t.date     "start_date"
     t.string   "caller_call_type"
     t.string   "receiver_call_type"
+    t.integer  "receiver_number"
+    t.integer  "caller_number"
   end
 
   add_index "meetings", ["api_key_id"], name: "index_meetings_on_api_key_id"

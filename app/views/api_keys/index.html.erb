@@ -30,7 +30,7 @@
 
 <div class="col-md-5 col-md-offset-1">
   <h3>For Demo Purpose </h3>
-<%= form_for(:session, url: sessions_path, method: "post") do |f| %>
+<%= form_for(:session, url: sessions_path, method: "get") do |f| %>
 
       <%= f.label :acc_tok %>
       <%= f.text_field :acc_tok %>

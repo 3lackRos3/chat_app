@@ -15,7 +15,6 @@ module Api
         api_id = ApiKey.find_by(access_token: @tok).id
 
         Rails.logger.info "/////////////////////------------------------------#{api_id}"
-        Rails.logger.info "/////////////////////------------------------------#{@opt[:non]}"
 
 				if caller_obj = User.find_by(uniq_id: user_params[:uid_caller])
 					Rails.logger.info "caller user already present"
@@ -54,6 +53,8 @@ module Api
 																		order_id: meeting_params[:order_id],
                                     start_time: start_time,
                                     start_date: start_time,
+                                    receiver_number: receiver_params[:number],
+                                    caller_number: caller_params[:number],
                                     api_key_id: api_id,
                                     caller_call_type: caller_params[:call_type],
                                     receiver_call_type: receiver_params[:call_type]
